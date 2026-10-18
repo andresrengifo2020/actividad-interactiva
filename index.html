@@ -1,0 +1,2537 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#202a30">
+  <title>Grade 7 • IF / ELSE Programs</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    button {
+      min-height: 44px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    textarea, input {
+      font-size: 16px;
+    }
+
+    img, video, canvas, svg {
+      max-width: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f6f9;
+      color: #26343b;
+    }
+
+    /* ================= HEADER ================= */
+
+    .header {
+      background: #202a30;
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      color: #d7dde0;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .badge {
+      background: #eee6fb;
+      color: #5b31a8;
+      padding: 9px 15px;
+      border-radius: 18px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* ================= CONTAINER ================= */
+
+    .container {
+      max-width: 1150px;
+      margin: 25px auto;
+      padding: 0 20px;
+      padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.08);
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    .description {
+      color: #61707b;
+      line-height: 1.5;
+    }
+
+    /* ================= TEACHER DEMO ================= */
+
+    .demo {
+      border-left: 6px solid #633fc2;
+    }
+
+    .demo-title {
+      color: #633fc2;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .example-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .example-btn {
+      border: none;
+      background: #eee6fb;
+      color: #5830a5;
+      padding: 9px 15px;
+      border-radius: 7px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .example-btn:hover {
+      background: #dfd1f5;
+    }
+
+    /* ================= GRID ================= */
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 15px;
+    }
+
+    .label {
+      font-size: 13px;
+      font-weight: bold;
+      color: #53616a;
+      margin-bottom: 7px;
+    }
+
+    /* ================= EDITOR ================= */
+
+    textarea {
+      width: 100%;
+      min-height: 310px;
+      resize: vertical;
+      background: #26343b;
+      color: #f4f7f8;
+      border: none;
+      outline: none;
+      border-radius: 9px;
+      padding: 15px;
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    /* ================= OUTPUT ================= */
+
+    .output {
+      background: #26343b;
+      color: #f4f7f8;
+      border-radius: 9px;
+      min-height: 150px;
+      padding: 15px;
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+
+    /* ================= BUTTONS ================= */
+
+    .buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .run-btn {
+      background: #35a64b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .run-btn:hover {
+      background: #2d8f40;
+    }
+
+    .reset-btn {
+      background: #e9edf0;
+      color: #34424c;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* ================= INTERACTIVE QUESTION ================= */
+
+    .interactive-question {
+      display: none;
+      background: #fff8df;
+      border: 2px solid #f1c84b;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 12px;
+    }
+
+    .interactive-question-title {
+      color: #805d00;
+      font-weight: bold;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .question-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .question-btn {
+      border: none;
+      border-radius: 7px;
+      padding: 9px 22px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      background: #4285f4;
+    }
+
+    .question-btn:hover {
+      background: #286bd1;
+    }
+
+    .question-input {
+      padding: 9px;
+      border: 1px solid #bbb;
+      border-radius: 7px;
+      width: 140px;
+      font-size: 14px;
+    }
+
+    .question-submit {
+      background: #35a64b;
+    }
+
+    /* ================= QUICK GUIDE ================= */
+
+    .quick-guide-section {
+      margin-bottom: 22px;
+    }
+
+    .quick-guide-title {
+      font-size: 24px;
+      color: #35444d;
+      margin: 0 0 10px 5px;
+    }
+
+    .quick-guide-title span {
+      color: #4285f4;
+      font-size: 22px;
+      margin-right: 8px;
+    }
+
+    .quick-guide {
+      background: white;
+      border-radius: 15px;
+      padding: 18px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      width: 100%;
+      box-shadow: 0 3px 10px rgba(0,0,0,.08);
+    }
+
+    .guide-card {
+      background: #f5f6f7;
+      border: 1px solid #d8dde1;
+      border-radius: 9px;
+      padding: 14px;
+      flex: 1;
+      min-width: 0;
+      min-height: 106px;
+    }
+
+    .guide-card-title {
+      font-size: 17px;
+      font-weight: bold;
+      color: #40515c;
+      margin-bottom: 6px;
+    }
+
+    .guide-description {
+      font-size: 14px;
+      color: #26343b;
+      margin-bottom: 18px;
+    }
+
+    .guide-code {
+      color: #6135bb;
+      font-family: "Courier New", monospace;
+      font-size: 13px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* ================= EXERCISES ================= */
+
+    .exercise {
+      border-left: 6px solid #4285f4;
+    }
+
+    .exercise-title {
+      color: #2876d2;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .exercise-number {
+      background: #e8f1ff;
+      color: #2876d2;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    /* ================= CHALLENGE ================= */
+
+    .challenge {
+      background: #eef6ff;
+      border-left: 5px solid #4285f4;
+      padding: 15px;
+      border-radius: 7px;
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    /* ================= HINT ================= */
+
+    .hint {
+      background: #fff8df;
+      border: 1px solid #f1d37b;
+      border-radius: 10px;
+      padding: 14px;
+      color: #805d00;
+      margin-top: 12px;
+      display: none;
+      line-height: 1.5;
+    }
+
+    .hint-button {
+      width: 100%;
+      background: #ffad00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hint-button:hover {
+      background: #e69b00;
+    }
+
+    /* ================= STATUS ================= */
+
+    .status {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    .success {
+      display: block;
+      background: #e5f6e9;
+      color: #237238;
+    }
+
+    .error {
+      display: block;
+      background: #fff0f0;
+      color: #a32b2b;
+    }
+
+    /* ================= FINAL ================= */
+
+    .final-box {
+      background: #eef6ff;
+      border-left: 5px solid #4285f4;
+      padding: 15px;
+      border-radius: 7px;
+      margin-top: 15px;
+      line-height: 1.6;
+      min-height: 60px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 850px) {
+      .header {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .container {
+        margin-top: 16px;
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-guide {
+        flex-wrap: wrap;
+      }
+
+      .guide-card {
+        flex: 1 1 45%;
+      }
+
+    }
+
+    @media (max-width: 550px) {
+
+      .guide-card {
+        flex: 1 1 100%;
+      }
+
+      .header {
+        padding: 18px;
+      }
+
+      .title {
+        font-size: 23px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .buttons {
+        flex-wrap: wrap;
+      }
+
+      .buttons button {
+        flex: 1 1 130px;
+      }
+
+      .question-input {
+        width: 100%;
+        min-height: 44px;
+      }
+
+      .question-buttons button {
+        min-height: 44px;
+      }
+
+      .guide-code {
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<div class="header">
+
+  <div>
+
+    <div class="title">
+      Grade 7 • IF / ELSE
+    </div>
+
+    <div class="subtitle">
+      Pseudocode • Variables • Decisions
+    </div>
+
+  </div>
+
+  <div class="badge">
+    COMPUTER SCIENCE
+  </div>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<div class="card">
+
+  <h1>
+    IF / ELSE Programs
+  </h1>
+
+  <div class="description">
+
+    A program can make a decision.
+
+    <br><br>
+
+    <b>INPUT → VARIABLE → IF → ELSE → OUTPUT</b>
+
+    <br><br>
+
+    The computer checks a condition.
+
+    If the condition is TRUE, it does one thing.
+
+    If the condition is FALSE, it does something else.
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     TEACHER DEMO
+===================================================== -->
+
+<div class="card demo">
+
+  <div class="demo-title">
+    Teacher Demo
+  </div>
+
+  <div class="description">
+    Choose an example, run it, and see how IF / ELSE works.
+  </div>
+
+
+  <div class="example-buttons">
+
+    <button
+      class="example-btn"
+      onclick="loadDemo('weather')">
+      WEATHER
+    </button>
+
+    <button
+      class="example-btn"
+      onclick="loadDemo('score')">
+      SCORE
+    </button>
+
+    <button
+      class="example-btn"
+      onclick="loadDemo('age')">
+      AGE
+    </button>
+
+  </div>
+
+
+  <div class="grid">
+
+    <div>
+
+      <div class="label">
+        Pseudocode
+      </div>
+
+      <textarea
+        id="demoCode"
+        spellcheck="false"></textarea>
+
+
+      <div class="buttons">
+
+        <button
+          class="run-btn"
+          onclick="runDemo()">
+          ▶ Run Program
+        </button>
+
+        <button
+          class="reset-btn"
+          onclick="resetDemo()">
+          ↻ Reset
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div>
+
+      <div class="label">
+        Program Output
+      </div>
+
+      <div
+        id="demoOutput"
+        class="output">
+        Ready to run.
+      </div>
+
+
+      <!-- INTERACTIVE QUESTION -->
+
+      <div
+        id="interactiveQuestion"
+        class="interactive-question">
+
+        <div
+          id="interactiveQuestionTitle"
+          class="interactive-question-title">
+        </div>
+
+        <div
+          id="interactiveQuestionButtons"
+          class="question-buttons">
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     QUICK GUIDE
+===================================================== -->
+
+<div class="quick-guide-section">
+
+  <h2 class="quick-guide-title">
+    <span>▮</span> Quick Guide
+  </h2>
+
+
+  <div class="quick-guide">
+
+
+    <div class="guide-card">
+
+      <div class="guide-card-title">
+        DECLARE
+      </div>
+
+      <div class="guide-description">
+        Creates a variable.
+      </div>
+
+      <div class="guide-code">
+        DECLARE age AS INTEGER
+      </div>
+
+    </div>
+
+
+    <div class="guide-card">
+
+      <div class="guide-card-title">
+        INPUT
+      </div>
+
+      <div class="guide-description">
+        Gets information from the user.
+      </div>
+
+      <div class="guide-code">
+        INPUT age
+      </div>
+
+    </div>
+
+
+    <div class="guide-card">
+
+      <div class="guide-card-title">
+        OUTPUT
+      </div>
+
+      <div class="guide-description">
+        Displays information.
+      </div>
+
+      <div class="guide-code">
+        OUTPUT "Hello"
+      </div>
+
+    </div>
+
+
+    <div class="guide-card">
+
+      <div class="guide-card-title">
+        IF / ELSE
+      </div>
+
+      <div class="guide-description">
+        Makes a decision.
+      </div>
+
+      <div class="guide-code">
+        IF age &gt;= 13 THEN
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     EXERCISE 1
+===================================================== -->
+
+<div class="card exercise">
+
+
+  <div class="exercise-header">
+
+    <div class="exercise-title">
+      Exercise 1 — Weather Decision
+    </div>
+
+    <div class="exercise-number">
+      EXERCISE 1
+    </div>
+
+  </div>
+
+
+  <div class="description">
+
+    Create a program that asks the user if it is raining.
+
+    <br><br>
+
+    If it is raining:
+
+    <b>Take an umbrella.</b>
+
+    <br>
+
+    Else:
+
+    <b>Go outside.</b>
+
+  </div>
+
+
+  <div class="challenge">
+
+    <b>Your program must contain:</b>
+
+    <br><br>
+
+    DECLARE &nbsp; • &nbsp;
+    INPUT &nbsp; • &nbsp;
+    IF &nbsp; • &nbsp;
+    ELSE &nbsp; • &nbsp;
+    OUTPUT &nbsp; • &nbsp;
+    END IF
+
+  </div>
+
+
+  <br>
+
+
+  <div class="grid">
+
+
+    <div>
+
+      <div class="label">
+        Write your program
+      </div>
+
+      <textarea
+        id="exercise1"
+        spellcheck="false"
+        placeholder="START
+
+DECLARE...
+
+INPUT...
+
+IF...
+
+ELSE...
+
+END IF
+
+END"></textarea>
+
+
+      <div class="buttons">
+
+        <button
+          class="run-btn"
+          onclick="checkExercise(1)">
+          ▶ Run Program
+        </button>
+
+        <button
+          class="reset-btn"
+          onclick="resetExercise(1)">
+          ↻ Reset
+        </button>
+
+      </div>
+
+
+      <div
+        id="status1"
+        class="status">
+      </div>
+
+    </div>
+
+
+    <div>
+
+      <div class="label">
+        Program Output
+      </div>
+
+      <div
+        id="output1"
+        class="output">
+        Write your program and run it.
+      </div>
+
+
+      <br>
+
+
+      <button
+        class="hint-button"
+        onclick="showHint(1)">
+        Need a Hint?
+      </button>
+
+
+      <div
+        id="hint1"
+        class="hint">
+
+        <b>Hint 1:</b>
+
+        <br><br>
+
+        You need a BOOLEAN variable.
+
+        <br><br>
+
+        Try:
+
+        <br><br>
+
+        <code>
+          DECLARE raining AS BOOLEAN
+        </code>
+
+        <br><br>
+
+        <b>Hint 2:</b>
+
+        <br><br>
+
+        Your condition can be:
+
+        <br><br>
+
+        <code>
+          IF raining = TRUE THEN
+        </code>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     EXERCISE 2
+===================================================== -->
+
+<div class="card exercise">
+
+
+  <div class="exercise-header">
+
+    <div class="exercise-title">
+      Exercise 2 — Game Score
+    </div>
+
+    <div class="exercise-number">
+      EXERCISE 2
+    </div>
+
+  </div>
+
+
+  <div class="description">
+
+    Create a program that asks the player for a score.
+
+    <br><br>
+
+    If the score is <b>60 or higher</b>:
+
+    <b>PASS</b>
+
+    <br>
+
+    Else:
+
+    <b>TRY AGAIN</b>
+
+  </div>
+
+
+  <div class="challenge">
+
+    <b>Think about the condition.</b>
+
+    <br><br>
+
+    The program should accept:
+
+    <b>60, 70, 80, 90...</b>
+
+    <br><br>
+
+    What comparison operator do you need?
+
+  </div>
+
+
+  <br>
+
+
+  <div class="grid">
+
+
+    <div>
+
+      <div class="label">
+        Write your program
+      </div>
+
+      <textarea
+        id="exercise2"
+        spellcheck="false"
+        placeholder="START
+
+DECLARE score AS INTEGER
+
+INPUT score
+
+IF...
+
+ELSE...
+
+END IF
+
+END"></textarea>
+
+
+      <div class="buttons">
+
+        <button
+          class="run-btn"
+          onclick="checkExercise(2)">
+          ▶ Run Program
+        </button>
+
+        <button
+          class="reset-btn"
+          onclick="resetExercise(2)">
+          ↻ Reset
+        </button>
+
+      </div>
+
+
+      <div
+        id="status2"
+        class="status">
+      </div>
+
+    </div>
+
+
+    <div>
+
+      <div class="label">
+        Program Output
+      </div>
+
+      <div
+        id="output2"
+        class="output">
+        Write your program and run it.
+      </div>
+
+
+      <br>
+
+
+      <button
+        class="hint-button"
+        onclick="showHint(2)">
+        Need a Hint?
+      </button>
+
+
+      <div
+        id="hint2"
+        class="hint">
+
+        <b>Hint 1:</b>
+
+        <br><br>
+
+        Score is a number.
+
+        <br><br>
+
+        Use:
+
+        <br><br>
+
+        <code>
+          DECLARE score AS INTEGER
+        </code>
+
+        <br><br>
+
+        <b>Hint 2:</b>
+
+        <br><br>
+
+        You need 60 and every number above 60.
+
+        <br><br>
+
+        Think about:
+
+        <br><br>
+
+        <code>
+          IF score &gt;= 60 THEN
+        </code>
+
+        <br><br>
+
+        Don't forget:
+
+        <br><br>
+
+        <code>
+          END IF
+        </code>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     FINAL CHALLENGE
+===================================================== -->
+
+<div class="card">
+
+  <h2>
+    Final Challenge
+  </h2>
+
+  <div class="description">
+
+    Choose one challenge and create your own IF / ELSE program.
+
+  </div>
+
+
+  <div class="example-buttons">
+
+    <button
+      class="example-btn"
+      onclick="showFinal('temperature')">
+      TEMPERATURE
+    </button>
+
+    <button
+      class="example-btn"
+      onclick="showFinal('battery')">
+      BATTERY
+    </button>
+
+    <button
+      class="example-btn"
+      onclick="showFinal('age')">
+      AGE
+    </button>
+
+  </div>
+
+
+  <div
+    id="finalChallenge"
+    class="final-box">
+
+    Choose a challenge above.
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   DEMO PROGRAMS
+===================================================== */
+
+const demos = {
+
+  weather:
+`START
+
+DECLARE raining AS BOOLEAN
+
+INPUT raining
+
+IF raining = TRUE THEN
+    OUTPUT "Take an umbrella"
+ELSE
+    OUTPUT "Go outside"
+END IF
+
+END`,
+
+  score:
+`START
+
+DECLARE score AS INTEGER
+
+INPUT score
+
+IF score >= 60 THEN
+    OUTPUT "PASS"
+ELSE
+    OUTPUT "TRY AGAIN"
+END IF
+
+END`,
+
+  age:
+`START
+
+DECLARE age AS INTEGER
+
+INPUT age
+
+IF age >= 13 THEN
+    OUTPUT "Teenager"
+ELSE
+    OUTPUT "Child"
+END IF
+
+END`
+
+};
+
+
+/* =====================================================
+   INITIAL DEMO
+===================================================== */
+
+document.getElementById("demoCode").value =
+  demos.weather;
+
+
+/* =====================================================
+   LOAD DEMO
+===================================================== */
+
+function loadDemo(name) {
+
+  document.getElementById("demoCode").value =
+    demos[name];
+
+  document.getElementById("demoOutput").textContent =
+    "Ready to run.";
+
+  hideQuestion();
+
+}
+
+
+/* =====================================================
+   RESET DEMO
+===================================================== */
+
+function resetDemo() {
+
+  document.getElementById("demoCode").value =
+    demos.weather;
+
+  document.getElementById("demoOutput").textContent =
+    "Ready to run.";
+
+  hideQuestion();
+
+}
+
+
+/* =====================================================
+   INTERACTIVE INPUT
+===================================================== */
+
+function askInput(type, variable) {
+
+  return new Promise(function(resolve) {
+
+    const box =
+      document.getElementById(
+        "interactiveQuestion"
+      );
+
+    const title =
+      document.getElementById(
+        "interactiveQuestionTitle"
+      );
+
+    const buttons =
+      document.getElementById(
+        "interactiveQuestionButtons"
+      );
+
+
+    buttons.innerHTML = "";
+
+
+    /* ================= BOOLEAN ================= */
+
+    if (type === "BOOLEAN") {
+
+      title.textContent =
+        "Is " + variable + "?";
+
+
+      const yes =
+        document.createElement("button");
+
+      yes.textContent =
+        "YES";
+
+      yes.className =
+        "question-btn";
+
+
+      yes.onclick =
+        function() {
+
+          box.style.display =
+            "none";
+
+          resolve(true);
+
+        };
+
+
+      const no =
+        document.createElement("button");
+
+      no.textContent =
+        "NO";
+
+      no.className =
+        "question-btn";
+
+
+      no.onclick =
+        function() {
+
+          box.style.display =
+            "none";
+
+          resolve(false);
+
+        };
+
+
+      buttons.appendChild(yes);
+      buttons.appendChild(no);
+
+      box.style.display =
+        "block";
+
+      return;
+    }
+
+
+    /* ================= INTEGER ================= */
+
+    if (type === "INTEGER") {
+
+      title.textContent =
+        "Enter " + variable + ":";
+
+
+      const input =
+        document.createElement("input");
+
+      input.type =
+        "number";
+
+      input.className =
+        "question-input";
+
+
+      const submit =
+        document.createElement("button");
+
+      submit.textContent =
+        "Submit";
+
+      submit.className =
+        "question-btn question-submit";
+
+
+      submit.onclick =
+        function() {
+
+          if (
+            input.value.trim() === ""
+          ) {
+            return;
+          }
+
+
+          box.style.display =
+            "none";
+
+
+          resolve(
+            Number(input.value)
+          );
+
+        };
+
+
+      buttons.appendChild(input);
+      buttons.appendChild(submit);
+
+      box.style.display =
+        "block";
+
+      input.focus();
+
+      return;
+    }
+
+
+    /* ================= STRING ================= */
+
+    title.textContent =
+      "Enter " + variable + ":";
+
+
+    const input =
+      document.createElement("input");
+
+    input.type =
+      "text";
+
+    input.className =
+      "question-input";
+
+
+    const submit =
+      document.createElement("button");
+
+    submit.textContent =
+      "Submit";
+
+    submit.className =
+      "question-btn question-submit";
+
+
+    submit.onclick =
+      function() {
+
+        if (
+          input.value.trim() === ""
+        ) {
+          return;
+        }
+
+
+        box.style.display =
+          "none";
+
+
+        resolve(
+          input.value
+        );
+
+      };
+
+
+    buttons.appendChild(input);
+    buttons.appendChild(submit);
+
+    box.style.display =
+      "block";
+
+    input.focus();
+
+  });
+
+}
+
+
+/* =====================================================
+   HIDE QUESTION
+===================================================== */
+
+function hideQuestion() {
+
+  const box =
+    document.getElementById(
+      "interactiveQuestion"
+    );
+
+  box.style.display =
+    "none";
+
+}
+
+
+/* =====================================================
+   GET VALUE
+===================================================== */
+
+function getValue(value, variables) {
+
+  value =
+    value.trim();
+
+
+  if (
+    /^".*"$/.test(value)
+  ) {
+
+    return value.slice(1, -1);
+
+  }
+
+
+  if (
+    value.toUpperCase() ===
+    "TRUE"
+  ) {
+
+    return true;
+
+  }
+
+
+  if (
+    value.toUpperCase() ===
+    "FALSE"
+  ) {
+
+    return false;
+
+  }
+
+
+  if (
+    Object.prototype.hasOwnProperty.call(
+      variables,
+      value
+    )
+  ) {
+
+    return variables[value];
+
+  }
+
+
+  if (
+    !isNaN(Number(value))
+  ) {
+
+    return Number(value);
+
+  }
+
+
+  return value;
+
+}
+
+
+/* =====================================================
+   EVALUATE CONDITION
+===================================================== */
+
+function evaluateCondition(
+  condition,
+  variables
+) {
+
+  const operators = [
+    ">=",
+    "<=",
+    "==",
+    "!=",
+    ">",
+    "<"
+  ];
+
+
+  for (
+    const op of operators
+  ) {
+
+    if (
+      condition.includes(op)
+    ) {
+
+      const parts =
+        condition.split(op);
+
+
+      const left =
+        getValue(
+          parts[0],
+          variables
+        );
+
+
+      const right =
+        getValue(
+          parts.slice(1).join(op),
+          variables
+        );
+
+
+      if (
+        op === ">="
+      )
+        return left >= right;
+
+
+      if (
+        op === "<="
+      )
+        return left <= right;
+
+
+      if (
+        op === "=="
+      )
+        return left == right;
+
+
+      if (
+        op === "!="
+      )
+        return left != right;
+
+
+      if (
+        op === ">"
+      )
+        return left > right;
+
+
+      if (
+        op === "<"
+      )
+        return left < right;
+
+    }
+
+  }
+
+
+  return Boolean(
+    getValue(
+      condition,
+      variables
+    )
+  );
+
+}
+
+
+/* =====================================================
+   FIND IF
+===================================================== */
+
+function findIf(
+  lines,
+  start
+) {
+
+  let elseIndex =
+    -1;
+
+  let endIndex =
+    -1;
+
+
+  for (
+    let i = start + 1;
+    i < lines.length;
+    i++
+  ) {
+
+    const line =
+      lines[i].toUpperCase();
+
+
+    if (
+      line === "ELSE"
+    ) {
+
+      elseIndex =
+        i;
+
+    }
+
+
+    if (
+      line === "END IF"
+    ) {
+
+      endIndex =
+        i;
+
+      break;
+
+    }
+
+  }
+
+
+  if (
+    endIndex === -1
+  ) {
+
+    throw new Error(
+      "Your IF needs an END IF."
+    );
+
+  }
+
+
+  return {
+    elseIndex,
+    endIndex
+  };
+
+}
+
+
+/* =====================================================
+   EXECUTE PROGRAM
+===================================================== */
+
+async function executeProgram(
+  lines,
+  variables,
+  types,
+  output,
+  start,
+  end
+) {
+
+  let i =
+    start;
+
+
+  while (
+    i < end
+  ) {
+
+    const line =
+      lines[i];
+
+
+    /* ================= DECLARE ================= */
+
+    let match =
+      line.match(
+        /^DECLARE\s+(\w+)\s+AS\s+(STRING|INTEGER|BOOLEAN)$/i
+      );
+
+
+    if (match) {
+
+      variables[
+        match[1]
+      ] = null;
+
+
+      types[
+        match[1]
+      ] =
+        match[2].toUpperCase();
+
+
+      i++;
+
+      continue;
+
+    }
+
+
+    /* ================= INPUT ================= */
+
+    match =
+      line.match(
+        /^INPUT\s+(\w+)$/i
+      );
+
+
+    if (match) {
+
+      const variable =
+        match[1];
+
+
+      if (
+        !(variable in types)
+      ) {
+
+        throw new Error(
+          "You must DECLARE " +
+          variable +
+          " before INPUT."
+        );
+
+      }
+
+
+      variables[
+        variable
+      ] =
+        await askInput(
+          types[variable],
+          variable
+        );
+
+
+      i++;
+
+      continue;
+
+    }
+
+
+    /* ================= OUTPUT ================= */
+
+    if (
+      line
+        .toUpperCase()
+        .startsWith("OUTPUT ")
+    ) {
+
+      const content =
+        line.substring(7);
+
+
+      const parts =
+        content.split(",");
+
+
+      let text =
+        "";
+
+
+      parts.forEach(
+        function(part) {
+
+          text += String(
+            getValue(
+              part,
+              variables
+            )
+          );
+
+        }
+      );
+
+
+      output.push(text);
+
+
+      i++;
+
+      continue;
+
+    }
+
+
+    /* ================= IF ================= */
+
+    if (
+      /^IF\s+/i.test(line) &&
+      /THEN$/i.test(line)
+    ) {
+
+      const condition =
+        line
+          .substring(3)
+          .replace(
+            /\s+THEN$/i,
+            ""
+          )
+          .trim();
+
+
+      const parts =
+        findIf(
+          lines,
+          i
+        );
+
+
+      const result =
+        evaluateCondition(
+          condition,
+          variables
+        );
+
+
+      if (
+        result
+      ) {
+
+        await executeProgram(
+
+          lines,
+
+          variables,
+
+          types,
+
+          output,
+
+          i + 1,
+
+          parts.elseIndex === -1
+            ? parts.endIndex
+            : parts.elseIndex
+
+        );
+
+      }
+
+      else if (
+        parts.elseIndex !== -1
+      ) {
+
+        await executeProgram(
+
+          lines,
+
+          variables,
+
+          types,
+
+          output,
+
+          parts.elseIndex + 1,
+
+          parts.endIndex
+
+        );
+
+      }
+
+
+      i =
+        parts.endIndex + 1;
+
+      continue;
+
+    }
+
+
+    i++;
+
+  }
+
+}
+
+
+/* =====================================================
+   RUN DEMO
+===================================================== */
+
+async function runDemo() {
+
+  const code =
+    document.getElementById(
+      "demoCode"
+    ).value;
+
+
+  const outputBox =
+    document.getElementById(
+      "demoOutput"
+    );
+
+
+  outputBox.textContent =
+    "";
+
+
+  hideQuestion();
+
+
+  try {
+
+    const lines =
+      code
+        .split("\n")
+        .map(
+          line => line.trim()
+        )
+        .filter(
+          line => line !== ""
+        );
+
+
+    const variables = {};
+
+    const types = {};
+
+    const output = [];
+
+
+    await executeProgram(
+
+      lines,
+
+      variables,
+
+      types,
+
+      output,
+
+      0,
+
+      lines.length
+
+    );
+
+
+    outputBox.textContent =
+      output.join("\n");
+
+
+  }
+
+  catch(error) {
+
+    outputBox.textContent =
+      "Error: " +
+      error.message;
+
+  }
+
+}
+
+
+/* =====================================================
+   CHECK EXERCISE
+===================================================== */
+
+async function checkExercise(
+  number
+) {
+
+  const code =
+    document.getElementById(
+      "exercise" + number
+    ).value;
+
+
+  const status =
+    document.getElementById(
+      "status" + number
+    );
+
+
+  const output =
+    document.getElementById(
+      "output" + number
+    );
+
+
+  status.className =
+    "status";
+
+
+  if (
+    code.trim() === ""
+  ) {
+
+    status.textContent =
+      "Write your program first.";
+
+    status.className =
+      "status error";
+
+    return;
+
+  }
+
+
+  let correct =
+    false;
+
+
+  /* ================= EXERCISE 1 ================= */
+
+  if (
+    number === 1
+  ) {
+
+    correct =
+
+      /DECLARE\s+raining\s+AS\s+BOOLEAN/i.test(code)
+
+      &&
+
+      /INPUT\s+raining/i.test(code)
+
+      &&
+
+      /IF\s+raining\s*=\s*TRUE\s+THEN/i.test(code)
+
+      &&
+
+      /ELSE/i.test(code)
+
+      &&
+
+      /END\s+IF/i.test(code)
+
+      &&
+
+      /Take an umbrella/i.test(code)
+
+      &&
+
+      /Go outside/i.test(code);
+
+  }
+
+
+  /* ================= EXERCISE 2 ================= */
+
+  if (
+    number === 2
+  ) {
+
+    correct =
+
+      /DECLARE\s+score\s+AS\s+INTEGER/i.test(code)
+
+      &&
+
+      /INPUT\s+score/i.test(code)
+
+      &&
+
+      /IF\s+score\s*>=\s*60\s+THEN/i.test(code)
+
+      &&
+
+      /ELSE/i.test(code)
+
+      &&
+
+      /END\s+IF/i.test(code)
+
+      &&
+
+      /PASS/i.test(code)
+
+      &&
+
+      /TRY\s+AGAIN/i.test(code);
+
+  }
+
+
+  if (
+    !correct
+  ) {
+
+    status.textContent =
+      "Not quite. Check your program and use the hint.";
+
+    status.className =
+      "status error";
+
+    return;
+
+  }
+
+
+  status.textContent =
+    "✓ Excellent! Your IF / ELSE program is correct.";
+
+  status.className =
+    "status success";
+
+
+  try {
+
+    const lines =
+      code
+        .split("\n")
+        .map(
+          line => line.trim()
+        )
+        .filter(
+          line => line !== ""
+        );
+
+
+    const variables = {};
+
+    const types = {};
+
+    const results = [];
+
+
+    await executeProgram(
+
+      lines,
+
+      variables,
+
+      types,
+
+      results,
+
+      0,
+
+      lines.length
+
+    );
+
+
+    output.textContent =
+      results.join("\n");
+
+
+  }
+
+  catch(error) {
+
+    output.textContent =
+      "Error: " +
+      error.message;
+
+  }
+
+}
+
+
+/* =====================================================
+   HINTS
+===================================================== */
+
+function showHint(
+  number
+) {
+
+  const hint =
+    document.getElementById(
+      "hint" + number
+    );
+
+
+  hint.style.display =
+    "block";
+
+
+  if (
+    number === 1
+  ) {
+
+    hint.innerHTML = `
+
+      <b>Hint 1:</b>
+
+      <br><br>
+
+      You need a BOOLEAN variable.
+
+      <br><br>
+
+      <code>
+      DECLARE raining AS BOOLEAN
+      </code>
+
+      <br><br>
+
+      <b>Hint 2:</b>
+
+      <br><br>
+
+      Your condition can be:
+
+      <br><br>
+
+      <code>
+      IF raining = TRUE THEN
+      </code>
+
+      <br><br>
+
+      Then remember:
+
+      <br><br>
+
+      <code>
+      ELSE
+      </code>
+
+      <br><br>
+
+      and:
+
+      <br><br>
+
+      <code>
+      END IF
+      </code>
+
+    `;
+
+  }
+
+
+  if (
+    number === 2
+  ) {
+
+    hint.innerHTML = `
+
+      <b>Hint 1:</b>
+
+      <br><br>
+
+      Score is a number.
+
+      <br><br>
+
+      <code>
+      DECLARE score AS INTEGER
+      </code>
+
+      <br><br>
+
+      <b>Hint 2:</b>
+
+      <br><br>
+
+      You need 60 and every number above 60.
+
+      <br><br>
+
+      <code>
+      IF score &gt;= 60 THEN
+      </code>
+
+      <br><br>
+
+      Don't forget:
+
+      <br><br>
+
+      <code>
+      ELSE
+      </code>
+
+      <br><br>
+
+      and:
+
+      <br><br>
+
+      <code>
+      END IF
+      </code>
+
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   RESET EXERCISE
+===================================================== */
+
+function resetExercise(
+  number
+) {
+
+  document.getElementById(
+    "exercise" + number
+  ).value =
+    "";
+
+
+  document.getElementById(
+    "output" + number
+  ).textContent =
+    "Write your program and run it.";
+
+
+  const status =
+    document.getElementById(
+      "status" + number
+    );
+
+
+  status.textContent =
+    "";
+
+  status.className =
+    "status";
+
+
+  document.getElementById(
+    "hint" + number
+  ).style.display =
+    "none";
+
+
+  hideQuestion();
+
+}
+
+
+/* =====================================================
+   FINAL CHALLENGE
+===================================================== */
+
+function showFinal(
+  type
+) {
+
+  const box =
+    document.getElementById(
+      "finalChallenge"
+    );
+
+
+  if (
+    type === "temperature"
+  ) {
+
+    box.innerHTML = `
+
+      <b>Temperature Challenge</b>
+
+      <br><br>
+
+      Ask for today's temperature.
+
+      <br><br>
+
+      IF the temperature is below 15:
+
+      <b>OUTPUT "Wear a jacket"</b>
+
+      <br>
+
+      ELSE:
+
+      <b>OUTPUT "You can go without a jacket"</b>
+
+      <br><br>
+
+      Build the complete program using:
+
+      <b>
+      DECLARE → INPUT → IF → ELSE → OUTPUT → END IF
+      </b>
+
+    `;
+
+  }
+
+
+  if (
+    type === "battery"
+  ) {
+
+    box.innerHTML = `
+
+      <b>Battery Challenge</b>
+
+      <br><br>
+
+      Ask for the battery percentage.
+
+      <br><br>
+
+      IF it is below 20:
+
+      <b>OUTPUT "Charge the device"</b>
+
+      <br>
+
+      ELSE:
+
+      <b>OUTPUT "Battery is OK"</b>
+
+      <br><br>
+
+      Build the complete program.
+
+    `;
+
+  }
+
+
+  if (
+    type === "age"
+  ) {
+
+    box.innerHTML = `
+
+      <b>Age Challenge</b>
+
+      <br><br>
+
+      Ask for the user's age.
+
+      <br><br>
+
+      IF age is 13 or older:
+
+      <b>OUTPUT "Teenager"</b>
+
+      <br>
+
+      ELSE:
+
+      <b>OUTPUT "Child"</b>
+
+      <br><br>
+
+      Build the complete program.
+
+    `;
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
